@@ -3,6 +3,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:5173") //Permite que el front pueda hacer peticiones al back.
 //Recibir peticiones HTTP
 @RestController
 @RequestMapping("/users")
@@ -14,12 +15,12 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@Valid @RequestBody UserRequest request) {
+    public UserResponse createUser(@Valid @RequestBody UserRequest request) {
         return userService.createUser(request);
     }
 
     @GetMapping
-    public List<User> getUsers() {
+    public List<UserResponse> getUsers() {
         return userService.getUsers();
     } 
 }

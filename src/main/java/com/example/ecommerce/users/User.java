@@ -14,10 +14,15 @@ public class User {
     
     @NotBlank
     private String name;
-
+//email no puede ser NULL
     @Email
     @NotBlank
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
+
 
     public User() {
     }
@@ -45,6 +50,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
     
 }
